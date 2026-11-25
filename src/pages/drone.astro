@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const photos = [
+  { file: 'Birtds-Eye-ViewThumbnail.webp', label: 'Bird’s-eye view', alt: 'A drone view looking straight down at a wooded backyard and patio' },
+  { file: 'GoingUpThumbnail.webp', label: 'Going up', alt: 'A drone view over rooftops and trees at the edge of town' },
+  { file: 'ComingBack.webp', label: 'Coming back', alt: 'A drone view looking down through a canopy of green trees' },
+];
+---
+
+<BaseLayout
+  title="Drone flights — Joel Marte"
+  description="A collection of photos from Joel Marte’s drone flights."
+>
+  <div class="drone-page-shell">
+    <header class="drone-topbar">
+      <a class="wordmark" href={`${base}#top`} aria-label="Joel Marte home"><span class="mark">jm</span><span>Joel Marte</span></a>
+      <nav aria-label="Page navigation">
+        <a href={`${base}#work`}>All projects</a>
+        <a class="nav-contact" href="mailto:hello@joelmarte.com">Say hello <span>↗</span></a>
+        <button class="theme-toggle" data-theme-toggle type="button" aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☼</span></button>
+      </nav>
+    </header>
+
+    <main class="drone-article">
+      <a class="drone-back mono" href={`${base}#work`}>← &nbsp;Back to projects</a>
+      <header class="drone-heading">
+        <p class="mono drone-kicker"><span class="dot"></span> Hobbies <span class="slash">/</span> Drone flights</p>
+        <h1 class="serif">A different point of view.</h1>
+        <p class="drone-lede">A few moments from learning to fly and seeing familiar places from above.</p>
+      </header>
+
+      <figure class="drone-feature">
+        <img src={`${base}images/drone-birds-eye.webp`} alt="A bird’s-eye drone view over a leafy backyard" fetchpriority="high" />
+        <figcaption class="mono">A bird’s-eye view</figcaption>
+      </figure>
+
+      <section class="drone-gallery" aria-labelledby="gallery-title">
+        <div class="drone-section-heading">
+          <p class="mono">01 &nbsp; / &nbsp; In the air</p>
+          <h2 id="gallery-title" class="serif">Looking around.</h2>
+          <p>More views from the flights, from heading up to finding the way back.</p>
+        </div>
+        <div class="drone-photo-list">
+          {photos.map((photo) => (
+            <figure class="drone-photo">
+              <img src={`${base}images/${photo.file}`} alt={photo.alt} loading="lazy" />
+              <figcaption class="mono">{photo.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="drone-footer"><a href={`${base}#work`}>← Back to the home page</a><span class="mono">Joel Marte · © {new Date().getFullYear()}</span></footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .drone-page-shell{max-width:1440px;margin:auto;padding:0 7.2%}.drone-topbar{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.wordmark{display:flex;gap:11px;align-items:center;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:-.03em}.mark{display:grid;place-items:center;width:29px;height:29px;background:var(--acid);border-radius:50%;font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic}.drone-topbar nav{display:flex;align-items:center;gap:28px;font-size:.8rem}.drone-topbar nav a{text-decoration:none;color:var(--nav-link)}.drone-topbar .nav-contact{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;color:var(--ink)}.nav-contact span{margin-left:12px}.theme-toggle{width:39px;height:39px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:500 1.15rem 'DM Sans',sans-serif;cursor:pointer;transition:background-color .2s,border-color .2s,transform .2s}.theme-toggle:hover{background:var(--line);transform:rotate(-10deg)}
+  .drone-article{max-width:920px;margin:0 auto;padding:55px 0 82px}.drone-back{display:inline-block;color:var(--muted);text-decoration:none;margin-bottom:58px}.drone-heading{max-width:740px;margin-bottom:42px}.drone-kicker{display:flex;align-items:center;gap:10px;color:var(--muted)}.drone-kicker .dot{width:7px;height:7px;background:var(--dot);border-radius:50%;box-shadow:0 0 0 4px var(--dot-shadow)}.drone-kicker .slash{color:var(--slash)}.drone-heading h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;letter-spacing:-.06em;font-weight:500;margin:25px 0 22px}.drone-lede{max-width:620px;color:var(--body-copy);font-size:1.05rem;line-height:1.8;margin:0}.drone-feature{margin:0 0 88px}.drone-feature img{display:block;width:100%;max-height:720px;object-fit:cover;border-radius:8px;background:var(--hero-art)}.drone-feature figcaption,.drone-photo figcaption{margin-top:12px;color:var(--muted)}.drone-gallery{border-top:1px solid var(--line);padding-top:45px}.drone-section-heading{max-width:610px;margin-bottom:36px}.drone-section-heading>p:first-child{color:var(--section-label)}.drone-section-heading h2{font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;letter-spacing:-.04em;font-weight:500;margin:17px 0}.drone-section-heading>p:last-child{color:var(--body-copy);line-height:1.8}.drone-photo-list{display:grid;gap:42px}.drone-photo{margin:0}.drone-photo img{display:block;width:100%;max-height:820px;object-fit:contain;object-position:center;border-radius:8px;background:var(--hero-art)}.drone-footer{min-height:92px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.76rem}.drone-footer a{color:var(--nav-link);text-decoration:none}
+  @media(max-width:760px){.drone-page-shell{padding:0 6%}.drone-topbar{height:72px}.drone-topbar nav{gap:15px}.drone-topbar nav a{font-size:.72rem}.drone-topbar .nav-contact{padding:9px 11px}.nav-contact span{margin-left:5px}.theme-toggle{width:35px;height:35px}.drone-article{padding:40px 0 60px}.drone-back{margin-bottom:43px}.drone-feature{margin-bottom:63px}.drone-photo-list{gap:30px}.drone-footer{padding:20px 0;align-items:flex-start;flex-direction:column;justify-content:center}}@media(max-width:390px){.drone-topbar nav{gap:10px}.drone-topbar nav a:first-child{display:none}.drone-topbar .wordmark{font-size:.82rem}.theme-toggle{width:32px;height:32px}}
+</style>
