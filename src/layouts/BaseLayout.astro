@@ -1,0 +1,27 @@
+---
+const { title = 'Joel Marte — Personal site', description = 'The personal site of Joel Marte.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body><slot /></body>
+</html>
+
+<style is:global>
+  :root{font-family:'DM Sans',sans-serif;color:#182822;background:#f5f4ee;font-synthesis:none;text-rendering:optimizeLegibility;--ink:#182822;--muted:#717a70;--line:#d9ddd0;--acid:#e7ff63;--paper:#f5f4ee}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px}a{color:inherit}::selection{background:var(--acid);color:var(--ink)}
+  .mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  :focus-visible{outline:3px solid #5b7044;outline-offset:4px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
