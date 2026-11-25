@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const configurations = [
+  { file: 'PC_preVer2.jpg', label: 'Configuration 1', alt: 'First fan layout in Joel’s PC build' },
+  { file: 'PC_preVer.jpg', label: 'Configuration 2', alt: 'Second fan layout in Joel’s PC build' },
+  { file: 'PC_preVer3.jpg', label: 'Configuration 3', alt: 'Third fan layout in Joel’s PC build' },
+  { file: 'PC_CurVer_Airflow.jpg', label: 'Final configuration', alt: 'Final PC fan layout showing airflow direction' },
+];
+---
+
+<BaseLayout
+  title="My First PC Build — Joel Marte"
+  description="Photos and notes from Joel Marte’s first small form factor PC build and airflow experiments."
+>
+  <div class="pc-page-shell">
+    <header class="pc-topbar">
+      <a class="wordmark" href={`${base}#top`} aria-label="Joel Marte home"><span class="mark">jm</span><span>Joel Marte</span></a>
+      <nav aria-label="Page navigation">
+        <a href={`${base}#work`}>All projects</a>
+        <a class="nav-contact" href="mailto:hello@joelmarte.com">Say hello <span>↗</span></a>
+        <button class="theme-toggle" data-theme-toggle type="button" aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☼</span></button>
+      </nav>
+    </header>
+
+    <main class="pc-article">
+      <a class="pc-back mono" href={`${base}#work`}>← &nbsp;Back to projects</a>
+      <header class="pc-heading">
+        <p class="mono pc-kicker"><span class="dot"></span> Hobbies <span class="slash">/</span> July 2025</p>
+        <h1 class="serif">My first PC build.</h1>
+        <p class="pc-lede">A small form factor build, with a few rounds of fan-layout experiments to find the airflow that worked best.</p>
+      </header>
+
+      <figure class="pc-feature">
+        <img src={`${base}images/PC_CurVer.jpg`} alt="Joel’s current custom-built PC with its side panel removed" fetchpriority="high" />
+        <figcaption class="mono">The current build</figcaption>
+      </figure>
+
+      <section class="pc-configurations" aria-labelledby="config-title">
+        <div class="pc-section-heading">
+          <p class="mono">01 &nbsp; / &nbsp; Iteration</p>
+          <h2 id="config-title" class="serif">Finding the right airflow.</h2>
+          <p>I tried a few fan arrangements before settling on the final configuration. Here’s the full photo sequence from the original build post.</p>
+        </div>
+        <div class="pc-photo-list">
+          {configurations.map((photo) => (
+            <figure class="pc-photo">
+              <img src={`${base}images/${photo.file}`} alt={photo.alt} loading="lazy" />
+              <figcaption class="mono">{photo.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <aside class="pc-note">
+        <span class="mono">A note on the final setup</span>
+        <p>The final fan layout gave me the best results. I was concerned the heat exhausted by the GPU would cause problems, but it had less effect than the other configurations.</p>
+        <p class="pc-resources mono">More on PC building: <a href="https://pcpartpicker.com/" target="_blank" rel="noreferrer">PCPartPicker ↗</a> <a href="https://www.youtube.com/results?search_query=NR200P+builds" target="_blank" rel="noreferrer">NR200P build videos ↗</a></p>
+      </aside>
+    </main>
+
+    <footer class="pc-footer"><a href={`${base}#work`}>← Back to the home page</a><span class="mono">Joel Marte · © {new Date().getFullYear()}</span></footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .pc-page-shell{max-width:1440px;margin:auto;padding:0 7.2%}.pc-topbar{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.wordmark{display:flex;gap:11px;align-items:center;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:-.03em}.mark{display:grid;place-items:center;width:29px;height:29px;background:var(--acid);border-radius:50%;font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic}.pc-topbar nav{display:flex;align-items:center;gap:28px;font-size:.8rem}.pc-topbar nav a{text-decoration:none;color:var(--nav-link)}.pc-topbar .nav-contact{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;color:var(--ink)}.nav-contact span{margin-left:12px}.theme-toggle{width:39px;height:39px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:500 1.15rem 'DM Sans',sans-serif;cursor:pointer;transition:background-color .2s,border-color .2s,transform .2s}.theme-toggle:hover{background:var(--line);transform:rotate(-10deg)}
+  .pc-article{max-width:920px;margin:0 auto;padding:55px 0 82px}.pc-back{display:inline-block;color:var(--muted);text-decoration:none;margin-bottom:58px}.pc-heading{max-width:740px;margin-bottom:42px}.pc-kicker{display:flex;align-items:center;gap:10px;color:var(--muted)}.pc-kicker .dot{width:7px;height:7px;background:var(--dot);border-radius:50%;box-shadow:0 0 0 4px var(--dot-shadow)}.pc-kicker .slash{color:var(--slash)}.pc-heading h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;letter-spacing:-.06em;font-weight:500;margin:25px 0 22px}.pc-lede{max-width:620px;color:var(--body-copy);font-size:1.05rem;line-height:1.8;margin:0}.pc-feature{margin:0 0 88px}.pc-feature img{display:block;width:100%;max-height:720px;object-fit:cover;border-radius:8px;background:var(--hero-art)}.pc-feature figcaption,.pc-photo figcaption{margin-top:12px;color:var(--muted)}.pc-configurations{border-top:1px solid var(--line);padding-top:45px}.pc-section-heading{max-width:610px;margin-bottom:36px}.pc-section-heading>p:first-child{color:var(--section-label)}.pc-section-heading h2{font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;letter-spacing:-.04em;font-weight:500;margin:17px 0}.pc-section-heading>p:last-child{color:var(--body-copy);line-height:1.8}.pc-photo-list{display:grid;gap:42px}.pc-photo{margin:0}.pc-photo img{display:block;width:100%;max-height:820px;object-fit:contain;object-position:center;border-radius:8px;background:var(--hero-art)}.pc-note{border-top:1px solid var(--line);margin-top:64px;padding-top:26px;max-width:720px}.pc-note>span{color:var(--section-label)}.pc-note>p:not(.pc-resources){color:var(--body-copy);line-height:1.8}.pc-resources{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:25px;color:var(--muted)}.pc-resources a{color:var(--accent);text-decoration:none}.pc-resources a:hover{text-decoration:underline}.pc-footer{min-height:92px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.76rem}.pc-footer a{color:var(--nav-link);text-decoration:none}
+  @media(max-width:760px){.pc-page-shell{padding:0 6%}.pc-topbar{height:72px}.pc-topbar nav{gap:15px}.pc-topbar nav a{font-size:.72rem}.pc-topbar .nav-contact{padding:9px 11px}.nav-contact span{margin-left:5px}.theme-toggle{width:35px;height:35px}.pc-article{padding:40px 0 60px}.pc-back{margin-bottom:43px}.pc-feature{margin-bottom:63px}.pc-photo-list{gap:30px}.pc-footer{padding:20px 0;align-items:flex-start;flex-direction:column;justify-content:center}}@media(max-width:390px){.pc-topbar nav{gap:10px}.pc-topbar nav a:first-child{display:none}.pc-topbar .wordmark{font-size:.82rem}.theme-toggle{width:32px;height:32px}}
+</style>
