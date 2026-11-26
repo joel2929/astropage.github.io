@@ -5,7 +5,7 @@ const base = import.meta.env.BASE_URL;
 const photos = [
   { file: 'OverTheBackboardThumbnail.webp', label: 'Over the backboard', alt: 'A basketball court photographed from above', href: 'https://drive.usercontent.google.com/download?id=1qEAeZ0BwKQR6HF2Ksl03HafAytukR-Cn&export=view&authuser=0' },
   { file: 'ComingBack.webp', label: 'Broccoli', alt: 'A drone view looking down through a canopy of green trees', href: 'https://drive.usercontent.google.com/download?id=16Vu7RFY5bVMiL7CMeNPeYgWy9yEdAhRR&export=view&authuser=0' },
-  { file: 'Birtds-Eye-ViewThumbnail.webp', label: 'Bird’s-eye view', alt: 'A drone view looking straight down at a wooded backyard and patio', href: 'https://drive.usercontent.google.com/download?id=16Vu7RFY5bVMiL7CMeNPeYgWy9yEdAhRR&export=view&authuser=0' },
+  { file: 'Birtds-Eye-ViewThumbnail.webp', label: 'Bird’s-eye view', alt: 'A drone view looking straight down at a wooded backyard and patio', href: 'https://drive.google.com/uc?export=view&id=1xWShc5HA3BcTKuSjOebhRYGS0A3OjHKQ' },
   { file: 'GoingUpThumbnail.webp', label: 'Going up', alt: 'A drone view over rooftops and trees at the edge of town', href: 'https://drive.usercontent.google.com/download?id=1OffwUF_eTk72mTU9-pzGs2chtPR8PBF5&export=view&authuser=0' },
 ];
 ---
@@ -32,12 +32,7 @@ const photos = [
         <p class="drone-lede">A few moments from learning to fly and seeing familiar places from above.</p>
       </header>
 
-      <figure class="drone-feature">
-        <a href="https://drive.usercontent.google.com/download?id=16Vu7RFY5bVMiL7CMeNPeYgWy9yEdAhRR&export=view&authuser=0" target="_blank" rel="noreferrer" aria-label="Open Bird’s-eye view image">
-          <img src={`${base}images/drone-birds-eye.webp`} alt="A bird’s-eye drone view over a leafy backyard" fetchpriority="high" />
-        </a>
-        <figcaption class="mono">A bird’s-eye view</figcaption>
-      </figure>
+
 
       <section class="drone-gallery" aria-labelledby="gallery-title">
         <div class="drone-section-heading">
