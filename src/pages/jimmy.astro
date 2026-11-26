@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const photos = [
+  { file: 'jimmy.jpg', label: 'Jimmy, in a few moments', alt: 'A photo collage of Jimmy, a small tan dog' },
+  { file: 'Jimmy_collage.jpg', label: 'A collage of Jimmy', alt: 'A collage of Jimmy resting on a couch and sitting on a bed' },
+  { file: 'jimmy.webp', label: 'Hello, Jimmy', alt: 'Jimmy looking up at the camera' },
+  { file: 'jimmy2.webp', label: 'Taking in the view', alt: 'Jimmy looking out from a bed toward the window' },
+  { file: 'jimmy3.webp', label: 'Settling in', alt: 'Jimmy curled up on a patterned couch' },
+  { file: 'jimmy5.webp', label: 'A quiet moment', alt: 'Jimmy sitting on a couch and looking down' },
+  { file: 'jimmy6.webp', label: 'All curled up', alt: 'Jimmy sleeping curled up on a couch' },
+  { file: 'jimmy9.webp', label: 'Snow day', alt: 'Jimmy in a red winter outfit with a snow effect' },
+];
+---
+
+<BaseLayout
+  title="Jimmy — Joel Marte"
+  description="Photos of Jimmy, Joel Marte’s small tan dog."
+>
+  <div class="jimmy-page-shell">
+    <header class="jimmy-topbar">
+      <a class="wordmark" href={`${base}#top`} aria-label="Joel Marte home"><span class="mark">jm</span><span>Joel Marte</span></a>
+      <nav aria-label="Page navigation">
+        <a href={`${base}#work`}>All projects</a>
+        <a class="nav-contact" href="mailto:hello@joelmarte.com">Say hello <span>↗</span></a>
+        <button class="theme-toggle" data-theme-toggle type="button" aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☼</span></button>
+      </nav>
+    </header>
+
+    <main class="jimmy-article">
+      <a class="jimmy-back mono" href={`${base}#work`}>← &nbsp;Back to projects</a>
+      <header class="jimmy-heading">
+        <p class="mono jimmy-kicker"><span class="dot"></span> A familiar face <span class="slash">/</span> Jimmy</p>
+        <h1 class="serif">Meet Jimmy.</h1>
+        <p class="jimmy-lede">Small dog. Big personality. A few photos of my favorite little companion.</p>
+      </header>
+
+      <section class="jimmy-gallery" aria-label="Photos of Jimmy">
+        {photos.map((photo) => (
+          <figure class="jimmy-photo">
+            <img src={`${base}images/${photo.file}`} alt={photo.alt} loading="lazy" />
+            <figcaption class="mono">{photo.label}</figcaption>
+          </figure>
+        ))}
+      </section>
+    </main>
+
+    <footer class="jimmy-footer"><a href={`${base}#work`}>← Back to the home page</a><span class="mono">Joel Marte · © {new Date().getFullYear()}</span></footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .jimmy-page-shell{max-width:1440px;margin:auto;padding:0 7.2%}.jimmy-topbar{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.wordmark{display:flex;gap:11px;align-items:center;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:-.03em}.mark{display:grid;place-items:center;width:29px;height:29px;background:var(--acid);border-radius:50%;font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic}.jimmy-topbar nav{display:flex;align-items:center;gap:28px;font-size:.8rem}.jimmy-topbar nav a{text-decoration:none;color:var(--nav-link)}.jimmy-topbar .nav-contact{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;color:var(--ink)}.nav-contact span{margin-left:12px}.theme-toggle{width:39px;height:39px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:500 1.15rem 'DM Sans',sans-serif;cursor:pointer;transition:background-color .2s,border-color .2s,transform .2s}.theme-toggle:hover{background:var(--line);transform:rotate(-10deg)}
+  .jimmy-article{max-width:1040px;margin:0 auto;padding:55px 0 82px}.jimmy-back{display:inline-block;color:var(--muted);text-decoration:none;margin-bottom:58px}.jimmy-heading{max-width:740px;margin-bottom:46px}.jimmy-kicker{display:flex;align-items:center;gap:10px;color:var(--muted)}.jimmy-kicker .dot{width:7px;height:7px;background:var(--dot);border-radius:50%;box-shadow:0 0 0 4px var(--dot-shadow)}.jimmy-kicker .slash{color:var(--slash)}.jimmy-heading h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;letter-spacing:-.06em;font-weight:500;margin:25px 0 22px}.jimmy-lede{max-width:620px;color:var(--body-copy);font-size:1.05rem;line-height:1.8;margin:0}.jimmy-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 24px}.jimmy-photo{margin:0;min-width:0}.jimmy-photo img{display:block;width:100%;height:clamp(260px,38vw,520px);object-fit:contain;border-radius:8px;background:var(--hero-art)}.jimmy-photo figcaption{margin-top:12px;color:var(--muted)}.jimmy-footer{min-height:92px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.76rem}.jimmy-footer a{color:var(--nav-link);text-decoration:none}
+  @media(max-width:760px){.jimmy-page-shell{padding:0 6%}.jimmy-topbar{height:72px}.jimmy-topbar nav{gap:15px}.jimmy-topbar nav a{font-size:.72rem}.jimmy-topbar .nav-contact{padding:9px 11px}.nav-contact span{margin-left:5px}.theme-toggle{width:35px;height:35px}.jimmy-article{padding:40px 0 60px}.jimmy-back{margin-bottom:43px}.jimmy-gallery{gap:28px 16px}.jimmy-photo img{height:clamp(210px,56vw,380px)}.jimmy-footer{padding:20px 0;align-items:flex-start;flex-direction:column;justify-content:center}}
+  @media(max-width:500px){.jimmy-gallery{grid-template-columns:1fr}.jimmy-photo img{height:auto;max-height:620px;min-height:260px}}
+  @media(max-width:390px){.jimmy-topbar nav{gap:10px}.jimmy-topbar nav a:first-child{display:none}.jimmy-topbar .wordmark{font-size:.82rem}.theme-toggle{width:32px;height:32px}}
+</style>
