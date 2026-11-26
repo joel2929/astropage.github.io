@@ -8,6 +8,22 @@ const configurations = [
   { file: 'PC_preVer3.jpg', label: 'Configuration 3', alt: 'Third fan layout in Joel’s PC build' },
   { file: 'PC_CurVer_Airflow.jpg', label: 'Final configuration', alt: 'Final PC fan layout showing airflow direction' },
 ];
+const hardware = [
+  { type: 'CPU', item: 'AMD Ryzen 5 5600G 3.9 GHz 6-Core Processor', href: 'https://pcpartpicker.com/product/sYmmP6/amd-ryzen-5-5600g-39-ghz-6-core-processor-100-100000252box', price: '$135.00' },
+  { type: 'CPU Cooler', item: 'Noctua NH-L9x65 33.84 CFM CPU Cooler', href: 'https://pcpartpicker.com/product/fhqbt6/noctua-nh-l9x65-3384-cfm-cpu-cooler-nh-l9x65', price: '$64.00' },
+  { type: 'Motherboard', item: 'Gigabyte B550I AORUS PRO AX Mini ITX AM4 Motherboard', href: 'https://pcpartpicker.com/product/9pn8TW/gigabyte-b550i-aorus-pro-ax-mini-itx-am4-motherboard-b550i-aorus-pro-ax', price: '$189.99' },
+  { type: 'Memory', item: 'G.Skill Trident Z RGB 16 GB (2 x 8 GB) DDR4-3600 CL18 Memory', href: 'https://pcpartpicker.com/product/6jBTwP/gskill-trident-z-rgb-16gb-2-x-8gb-ddr4-3600-memory-f4-3600c18-16gtzrx', price: '$49.99' },
+  { type: 'Storage', item: 'Samsung 970 Evo Plus 1 TB M.2-2280 PCIe 3.0 X4 NVME Solid State Drive', href: 'https://pcpartpicker.com/product/Zxw7YJ/samsung-970-evo-plus-1-tb-m2-2280-nvme-solid-state-drive-mz-v7s1t0bam', price: '$138.94' },
+  { type: 'Storage', item: 'Samsung 980 Pro 1 TB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive', href: 'https://pcpartpicker.com/product/DDWBD3/samsung-980-pro-1-tb-m2-2280-nvme-solid-state-drive-mz-v8p1t0bam', price: '$149.99' },
+  { type: 'Video Card', item: 'EVGA XC GAMING GeForce RTX 3060 12GB 12 GB Video Card', href: 'https://pcpartpicker.com/product/LpbTwP/evga-geforce-rtx-3060-12-gb-xc-gaming-video-card-12g-p5-3657-kr', price: '$170.00' },
+  { type: 'Case', item: 'Cooler Master MasterBox NR200P Mini ITX Desktop Case', href: 'https://pcpartpicker.com/product/29drxr/cooler-master-masterbox-nr200p-mini-itx-desktop-case-mcb-nr200p-kgnn-s00', price: '$131.00' },
+  { type: 'Power Supply', item: 'EVGA SuperNOVA 650 GM 650 W 80+ Gold Certified Fully Modular SFX Power Supply', href: 'https://pcpartpicker.com/product/Fq8j4D/evga-supernova-650-gm-650-w-80-gold-certified-fully-modular-sfx-power-supply-123-gm-0650-y1', price: '$89.99' },
+  { type: 'Operating System', item: 'Microsoft Windows 11 Home OEM - DVD 64-bit', href: 'https://pcpartpicker.com/product/dKkWGX/microsoft-windows-11-home-oem-dvd-64-bit-kw9-00633', price: '$0.00' },
+  { type: 'Case Fan', item: 'Noctua A9x14 29.72 CFM 92 mm Fan', href: 'https://pcpartpicker.com/product/PfXfrH/noctua-nf-a9x14-2972-cfm-92-mm-fan-nf-a9x14', price: '$26.00' },
+  { type: 'Case Fan', item: 'Noctua A9x14 29.72 CFM 92 mm Fan', href: 'https://pcpartpicker.com/product/PfXfrH/noctua-nf-a9x14-2972-cfm-92-mm-fan-nf-a9x14', price: '$26.00' },
+  { type: 'Case Fan', item: 'be quiet! Shadow Wings 2 38.5 CFM 120 mm Fan', href: 'https://pcpartpicker.com/product/pFjJ7P/be-quiet-bl085-385-cfm-120mm-fan-bl085', price: '$16.89' },
+  { type: 'Case Fan', item: 'be quiet! Shadow Wings 2 38.5 CFM 120 mm Fan', href: 'https://pcpartpicker.com/product/pFjJ7P/be-quiet-bl085-385-cfm-120mm-fan-bl085', price: '$16.89' },
+];
 ---
 
 <BaseLayout
@@ -32,6 +48,28 @@ const configurations = [
         <p class="pc-lede">A small form factor build, with a few rounds of fan-layout experiments to find the airflow that worked best.</p>
       </header>
 
+      <section class="pc-objective" aria-labelledby="objective-title">
+        <p class="mono pc-section-label">Objective</p>
+        <h2 id="objective-title" class="serif">A small build with room to grow.</h2>
+        <p>In March of 2023 I decided to build a PC because my laptop was showing its age and I was getting into PC gaming. I wanted a small form factor build that was sleek and minimalist, used an AMD CPU with an iGPU (initially at least), was good enough for some gaming, reasonably quiet, and cost no more than $1,000. These were vague criteria, but they gave me a starting point while I researched and learned more about building PCs.</p>
+      </section>
+
+      <section class="pc-hardware" aria-labelledby="hardware-title">
+        <div class="pc-section-heading">
+          <p class="mono">01 &nbsp; / &nbsp; Hardware</p>
+          <h2 id="hardware-title" class="serif">The parts list.</h2>
+        </div>
+        <div class="pc-hardware-table-wrap">
+          <table class="pc-hardware-table">
+            <thead><tr><th scope="col">Type</th><th scope="col">Item</th><th scope="col">Price</th></tr></thead>
+            <tbody>
+              {hardware.map((part) => <tr><td>{part.type}</td><td><a href={part.href} target="_blank" rel="noreferrer">{part.item} ↗</a></td><td>{part.price}</td></tr>)}
+            </tbody>
+            <tfoot><tr><th scope="row" colspan="2">Total</th><td>$1,204.68</td></tr></tfoot>
+          </table>
+        </div>
+      </section>
+
       <figure class="pc-feature">
         <img src={`${base}images/PC_CurVer.jpg`} alt="Joel’s current custom-built PC with its side panel removed" fetchpriority="high" />
         <figcaption class="mono">The current build</figcaption>
@@ -39,7 +77,7 @@ const configurations = [
 
       <section class="pc-configurations" aria-labelledby="config-title">
         <div class="pc-section-heading">
-          <p class="mono">01 &nbsp; / &nbsp; Iteration</p>
+          <p class="mono">02 &nbsp; / &nbsp; Iteration</p>
           <h2 id="config-title" class="serif">Finding the right airflow.</h2>
           <p>I tried a few fan arrangements before settling on the final configuration. Here’s the full photo sequence from the original build post.</p>
         </div>
@@ -66,6 +104,6 @@ const configurations = [
 
 <style>
   .pc-page-shell{max-width:1440px;margin:auto;padding:0 7.2%}.pc-topbar{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.wordmark{display:flex;gap:11px;align-items:center;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:-.03em}.mark{display:grid;place-items:center;width:29px;height:29px;background:var(--acid);border-radius:50%;font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic}.pc-topbar nav{display:flex;align-items:center;gap:28px;font-size:.8rem}.pc-topbar nav a{text-decoration:none;color:var(--nav-link)}.pc-topbar .nav-contact{padding:11px 15px;border:1px solid var(--ink);border-radius:99px;color:var(--ink)}.nav-contact span{margin-left:12px}.theme-toggle{width:39px;height:39px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:500 1.15rem 'DM Sans',sans-serif;cursor:pointer;transition:background-color .2s,border-color .2s,transform .2s}.theme-toggle:hover{background:var(--line);transform:rotate(-10deg)}
-  .pc-article{max-width:920px;margin:0 auto;padding:55px 0 82px}.pc-back{display:inline-block;color:var(--muted);text-decoration:none;margin-bottom:58px}.pc-heading{max-width:740px;margin-bottom:42px}.pc-kicker{display:flex;align-items:center;gap:10px;color:var(--muted)}.pc-kicker .dot{width:7px;height:7px;background:var(--dot);border-radius:50%;box-shadow:0 0 0 4px var(--dot-shadow)}.pc-kicker .slash{color:var(--slash)}.pc-heading h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;letter-spacing:-.06em;font-weight:500;margin:25px 0 22px}.pc-lede{max-width:620px;color:var(--body-copy);font-size:1.05rem;line-height:1.8;margin:0}.pc-feature{margin:0 0 88px}.pc-feature img{display:block;width:100%;max-height:720px;object-fit:cover;border-radius:8px;background:var(--hero-art)}.pc-feature figcaption,.pc-photo figcaption{margin-top:12px;color:var(--muted)}.pc-configurations{border-top:1px solid var(--line);padding-top:45px}.pc-section-heading{max-width:610px;margin-bottom:36px}.pc-section-heading>p:first-child{color:var(--section-label)}.pc-section-heading h2{font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;letter-spacing:-.04em;font-weight:500;margin:17px 0}.pc-section-heading>p:last-child{color:var(--body-copy);line-height:1.8}.pc-photo-list{display:grid;gap:42px}.pc-photo{margin:0}.pc-photo img{display:block;width:100%;max-height:820px;object-fit:contain;object-position:center;border-radius:8px;background:var(--hero-art)}.pc-note{border-top:1px solid var(--line);margin-top:64px;padding-top:26px;max-width:720px}.pc-note>span{color:var(--section-label)}.pc-note>p:not(.pc-resources){color:var(--body-copy);line-height:1.8}.pc-resources{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:25px;color:var(--muted)}.pc-resources a{color:var(--accent);text-decoration:none}.pc-resources a:hover{text-decoration:underline}.pc-footer{min-height:92px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.76rem}.pc-footer a{color:var(--nav-link);text-decoration:none}
+  .pc-article{max-width:920px;margin:0 auto;padding:55px 0 82px}.pc-back{display:inline-block;color:var(--muted);text-decoration:none;margin-bottom:58px}.pc-heading{max-width:740px;margin-bottom:42px}.pc-kicker{display:flex;align-items:center;gap:10px;color:var(--muted)}.pc-kicker .dot{width:7px;height:7px;background:var(--dot);border-radius:50%;box-shadow:0 0 0 4px var(--dot-shadow)}.pc-kicker .slash{color:var(--slash)}.pc-heading h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;letter-spacing:-.06em;font-weight:500;margin:25px 0 22px}.pc-lede{max-width:620px;color:var(--body-copy);font-size:1.05rem;line-height:1.8;margin:0}.pc-objective{border-top:1px solid var(--line);padding-top:42px;margin-bottom:72px;max-width:760px}.pc-section-label{color:var(--section-label);margin:0 0 18px}.pc-objective h2{font-size:clamp(2.3rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.04em;font-weight:500;margin:0 0 20px}.pc-objective>p:last-child{color:var(--body-copy);line-height:1.8;margin:0}.pc-hardware{border-top:1px solid var(--line);padding-top:45px;margin-bottom:88px}.pc-hardware .pc-section-heading{margin-bottom:28px}.pc-hardware-table-wrap{overflow-x:auto}.pc-hardware-table{width:100%;border-collapse:collapse;font-size:.84rem}.pc-hardware-table th,.pc-hardware-table td{padding:16px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.pc-hardware-table th:first-child,.pc-hardware-table td:first-child{padding-left:0;color:var(--muted);white-space:nowrap}.pc-hardware-table th:last-child,.pc-hardware-table td:last-child{text-align:right;white-space:nowrap;padding-right:0}.pc-hardware-table thead th{font:500 .7rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--section-label)}.pc-hardware-table td:nth-child(2) a{color:var(--ink);text-decoration:none}.pc-hardware-table td:nth-child(2) a:hover{color:var(--accent);text-decoration:underline}.pc-hardware-table tfoot th,.pc-hardware-table tfoot td{border-bottom:0;font-weight:600;padding-top:20px}.pc-feature{margin:0 0 88px}.pc-feature img{display:block;width:100%;max-height:720px;object-fit:cover;border-radius:8px;background:var(--hero-art)}.pc-feature figcaption,.pc-photo figcaption{margin-top:12px;color:var(--muted)}.pc-configurations{border-top:1px solid var(--line);padding-top:45px}.pc-section-heading{max-width:610px;margin-bottom:36px}.pc-section-heading>p:first-child{color:var(--section-label)}.pc-section-heading h2{font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;letter-spacing:-.04em;font-weight:500;margin:17px 0}.pc-section-heading>p:last-child{color:var(--body-copy);line-height:1.8}.pc-photo-list{display:grid;gap:42px}.pc-photo{margin:0}.pc-photo img{display:block;width:100%;max-height:820px;object-fit:contain;object-position:center;border-radius:8px;background:var(--hero-art)}.pc-note{border-top:1px solid var(--line);margin-top:64px;padding-top:26px;max-width:720px}.pc-note>span{color:var(--section-label)}.pc-note>p:not(.pc-resources){color:var(--body-copy);line-height:1.8}.pc-resources{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:25px;color:var(--muted)}.pc-resources a{color:var(--accent);text-decoration:none}.pc-resources a:hover{text-decoration:underline}.pc-footer{min-height:92px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:.76rem}.pc-footer a{color:var(--nav-link);text-decoration:none}
   @media(max-width:760px){.pc-page-shell{padding:0 6%}.pc-topbar{height:72px}.pc-topbar nav{gap:15px}.pc-topbar nav a{font-size:.72rem}.pc-topbar .nav-contact{padding:9px 11px}.nav-contact span{margin-left:5px}.theme-toggle{width:35px;height:35px}.pc-article{padding:40px 0 60px}.pc-back{margin-bottom:43px}.pc-feature{margin-bottom:63px}.pc-photo-list{gap:30px}.pc-footer{padding:20px 0;align-items:flex-start;flex-direction:column;justify-content:center}}@media(max-width:390px){.pc-topbar nav{gap:10px}.pc-topbar nav a:first-child{display:none}.pc-topbar .wordmark{font-size:.82rem}.theme-toggle{width:32px;height:32px}}
 </style>
